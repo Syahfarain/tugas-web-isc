@@ -255,7 +255,7 @@ footer {
   padding: 80px 40px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 40px;
 }
 
@@ -319,13 +319,10 @@ footer {
   margin-top: 2px;
 }
 
+
+
 .hero-logo img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #cbb560;
-  box-shadow: 0 0 30px rgba(203, 181, 96, 0.2);
+  width: 550px;
 }
 
 /* VISI MISI */
@@ -348,7 +345,7 @@ footer {
 }
 
 .vm-card.misi {
-  border-left-color: #cbb560;
+  border-left-color: #124a89;
 }
 
 .vm-card .icon {
@@ -357,9 +354,9 @@ footer {
 }
 
 .vm-card h3 {
-  font-size: 1.15rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #124a89;
   margin-bottom: 10px;
 }
 
@@ -387,7 +384,7 @@ footer {
   content: "•";
   position: absolute;
   left: 0;
-  color: #cbb560;
+  color: #124a89;
   font-weight: 700;
 }
 
@@ -426,6 +423,15 @@ footer {
   border-radius: 20px;
 }
 
+.btn-selengkapnya {
+  display: inline-block;
+  background-color: #124a89;
+  padding: 10px 15px;
+  color: #fff;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
 /* Code Card Component */
 .code-card {
   background-color: #1e1e2e;
@@ -448,12 +454,15 @@ footer {
   height: 11px;
   border-radius: 50%;
 }
+
 .dot.r {
   background: #ff5f57;
 }
+
 .dot.y {
   background: #febc2e;
 }
+
 .dot.g {
   background: #28c840;
 }
@@ -475,22 +484,28 @@ footer {
   color: #45475a;
   margin-right: 14px;
 }
+
 .c-kw {
   color: #cba6f7;
 }
+
 .c-fn {
   color: #cbb560;
 }
+
 .c-str {
   color: #a6e3a1;
 }
+
 .c-cm {
   color: #6c7086;
   font-style: italic;
 }
+
 .c-br {
   color: #89b4fa;
 }
+
 .c-va {
   color: #fab387;
 }
@@ -521,8 +536,8 @@ footer {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.service-card .icon {
-  font-size: 2rem;
+.service-card .icon-img {
+  width: 60px;
   margin-bottom: 14px;
 }
 
@@ -935,9 +950,11 @@ footer {
 .prestasi-card.gold {
   border-left-color: #cbb560;
 }
+
 .prestasi-card.silver {
   border-left-color: #9dafc4;
 }
+
 .prestasi-card.bronze {
   border-left-color: #c87941;
 }
@@ -964,6 +981,7 @@ footer {
 .prestasi-card.silver .prestasi-place {
   color: #7a99b8;
 }
+
 .prestasi-card.bronze .prestasi-place {
   color: #c87941;
 }
