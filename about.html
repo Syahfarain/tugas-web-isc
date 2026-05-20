@@ -3,959 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About — ISC UNPAM</title>
+    <title>About - ISC UNPAM</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      /* ===================== RESET & ROOT ===================== */
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --bg: #0a0e1a;
-        --bg2: #0f1426;
-        --surface: #151c30;
-        --border: #1e2a45;
-        --accent: #00d4ff;
-        --accent2: #7b5ea7;
-        --accent3: #ff6b35;
-        --text: #e8edf5;
-        --muted: #6b7a99;
-        --white: #ffffff;
-        --font-head: "Syne", sans-serif;
-        --font-mono: "Space Mono", monospace;
-        --font-body: "Inter", sans-serif;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: var(--font-body);
-        font-weight: 300;
-        line-height: 1.7;
-        overflow-x: hidden;
-      }
-
-      ::-webkit-scrollbar {
-        width: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: var(--bg);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(--accent);
-        border-radius: 3px;
-      }
-
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .section-tag {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: var(--accent);
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        display: inline-block;
-        margin-bottom: 1rem;
-      }
-      .section-tag::before {
-        content: "// ";
-        opacity: 0.5;
-      }
-
-      /* ===================== NAVBAR ===================== */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 999;
-        padding: 1.2rem 0;
-        background: rgba(10, 14, 26, 0.85);
-        backdrop-filter: blur(16px);
-        border-bottom: 1px solid var(--border);
-      }
-
-      nav .nav-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .nav-logo {
-        font-family: var(--font-head);
-        font-weight: 800;
-        font-size: 1.35rem;
-        color: var(--white);
-        text-decoration: none;
-        letter-spacing: -0.02em;
-      }
-      .nav-logo span {
-        color: var(--accent);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2.2rem;
-        list-style: none;
-      }
-
-      .nav-links a {
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        color: var(--muted);
-        text-decoration: none;
-        letter-spacing: 0.05em;
-        transition: color 0.2s;
-        position: relative;
-      }
-
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 0;
-        height: 1px;
-        background: var(--accent);
-        transition: width 0.3s ease;
-      }
-
-      .nav-links a:hover {
-        color: var(--accent);
-      }
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-      .nav-links a.active {
-        color: var(--accent);
-      }
-      .nav-links a.active::after {
-        width: 100%;
-      }
-
-      .nav-cta {
-        background: var(--accent) !important;
-        color: var(--bg) !important;
-        padding: 0.45rem 1.1rem;
-        border-radius: 4px;
-        font-weight: 700;
-      }
-      .nav-cta::after {
-        display: none !important;
-      }
-
-      /* ===================== PAGE HERO ===================== */
-      #page-hero {
-        padding: 10rem 0 5rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      #page-hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(var(--border) 1px, transparent 1px),
-          linear-gradient(90deg, var(--border) 1px, transparent 1px);
-        background-size: 60px 60px;
-        opacity: 0.3;
-      }
-
-      .blob {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(90px);
-        pointer-events: none;
-      }
-      .blob-1 {
-        width: 400px;
-        height: 400px;
-        background: rgba(123, 94, 167, 0.12);
-        top: -80px;
-        right: 10%;
-      }
-      .blob-2 {
-        width: 300px;
-        height: 300px;
-        background: rgba(0, 212, 255, 0.07);
-        bottom: -40px;
-        left: 5%;
-      }
-
-      .page-hero-content {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-        animation: fadeUp 0.8s ease forwards;
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .breadcrumb {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: var(--muted);
-        letter-spacing: 0.12em;
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-
-      .breadcrumb a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      .breadcrumb span {
-        color: var(--border);
-      }
-
-      .page-hero-content h1 {
-        font-family: var(--font-head);
-        font-size: clamp(2.8rem, 7vw, 5rem);
-        font-weight: 800;
-        color: var(--white);
-        line-height: 1.05;
-        letter-spacing: -0.03em;
-        margin-bottom: 1.2rem;
-      }
-
-      .page-hero-content h1 em {
-        font-style: normal;
-        color: var(--accent);
-      }
-
-      .page-hero-content p {
-        color: var(--muted);
-        font-size: 1.05rem;
-        max-width: 540px;
-        margin: 0 auto;
-        line-height: 1.8;
-      }
-
-      /* ===================== SEJARAH ===================== */
-      #sejarah {
-        padding: 7rem 0;
-        background: var(--bg2);
-        position: relative;
-      }
-
-      #sejarah::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          ellipse at 20% 50%,
-          rgba(123, 94, 167, 0.05) 0%,
-          transparent 60%
-        );
-        pointer-events: none;
-      }
-
-      .sejarah-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
-        align-items: center;
-        margin-top: 3rem;
-      }
-
-      .sejarah-text h2 {
-        font-family: var(--font-head);
-        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-        font-weight: 800;
-        color: var(--white);
-        line-height: 1.15;
-        letter-spacing: -0.02em;
-        margin-bottom: 1.3rem;
-      }
-
-      .sejarah-text p {
-        color: var(--muted);
-        font-size: 0.97rem;
-        margin-bottom: 1rem;
-        line-height: 1.85;
-      }
-
-      /* Timeline */
-      .timeline {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        position: relative;
-      }
-
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 18px;
-        top: 0;
-        bottom: 0;
-        width: 1px;
-        background: linear-gradient(
-          to bottom,
-          var(--accent),
-          var(--accent2),
-          transparent
-        );
-      }
-
-      .tl-item {
-        display: flex;
-        gap: 1.5rem;
-        padding-bottom: 2rem;
-        position: relative;
-      }
-
-      .tl-dot {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: var(--surface);
-        border: 2px solid var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        font-size: 0.85rem;
-        z-index: 1;
-        transition:
-          background 0.3s,
-          border-color 0.3s;
-      }
-
-      .tl-item:hover .tl-dot {
-        background: var(--accent);
-      }
-
-      .tl-body {
-      }
-
-      .tl-year {
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        color: var(--accent);
-        letter-spacing: 0.1em;
-        margin-bottom: 0.3rem;
-      }
-
-      .tl-title {
-        font-family: var(--font-head);
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--white);
-        margin-bottom: 0.3rem;
-      }
-
-      .tl-desc {
-        color: var(--muted);
-        font-size: 0.86rem;
-        line-height: 1.7;
-      }
-
-      /* ===================== STRUKTUR ===================== */
-      #struktur {
-        padding: 7rem 0;
-      }
-
-      .struktur-header {
-        text-align: center;
-        max-width: 540px;
-        margin: 0 auto 4rem;
-      }
-
-      .struktur-header h2 {
-        font-family: var(--font-head);
-        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-        font-weight: 800;
-        color: var(--white);
-        line-height: 1.15;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.8rem;
-      }
-
-      .struktur-header p {
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      /* Org chart */
-      .org-chart {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-      }
-
-      .org-row {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        position: relative;
-        width: 100%;
-      }
-
-      /* connector lines */
-      .org-row.children::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60%;
-        height: 1px;
-        background: var(--border);
-      }
-
-      .org-connector {
-        width: 1px;
-        height: 2.5rem;
-        background: linear-gradient(to bottom, var(--accent), var(--border));
-        margin: 0 auto;
-      }
-
-      .org-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 1.2rem 1.6rem;
-        text-align: center;
-        transition:
-          border-color 0.3s,
-          transform 0.3s;
-        min-width: 140px;
-        position: relative;
-      }
-
-      .org-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        border-radius: 10px 10px 0 0;
-      }
-
-      .org-card.ketua::before {
-        background: var(--accent);
-      }
-      .org-card.wakil::before {
-        background: var(--accent2);
-      }
-      .org-card.divisi::before {
-        background: var(--accent3);
-      }
-
-      .org-card:hover {
-        border-color: var(--accent);
-        transform: translateY(-3px);
-      }
-
-      .org-role {
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        color: var(--muted);
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        margin-bottom: 0.3rem;
-      }
-
-      .org-name {
-        font-family: var(--font-head);
-        font-size: 0.92rem;
-        font-weight: 700;
-        color: var(--white);
-      }
-
-      /* ===================== ANGGOTA / TEAM ===================== */
-      #team {
-        padding: 7rem 0;
-        background: var(--bg2);
-      }
-
-      .team-header {
-        margin-bottom: 3rem;
-      }
-
-      .team-header h2 {
-        font-family: var(--font-head);
-        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-        font-weight: 800;
-        color: var(--white);
-        letter-spacing: -0.02em;
-        margin-bottom: 0.5rem;
-      }
-
-      .team-header p {
-        color: var(--muted);
-        font-size: 0.97rem;
-      }
-
-      .team-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-      }
-
-      .team-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 1.8rem 1.4rem;
-        text-align: center;
-        transition:
-          border-color 0.3s,
-          transform 0.3s;
-      }
-
-      .team-card:hover {
-        border-color: var(--accent);
-        transform: translateY(-5px);
-      }
-
-      .team-avatar {
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
-        margin: 0 auto 1rem;
-        background: var(--bg);
-        border: 2px solid var(--border);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        transition: border-color 0.3s;
-      }
-
-      .team-card:hover .team-avatar {
-        border-color: var(--accent);
-      }
-
-      .team-name {
-        font-family: var(--font-head);
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--white);
-        margin-bottom: 0.2rem;
-      }
-
-      .team-role {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        color: var(--accent);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin-bottom: 0.8rem;
-      }
-
-      .team-div {
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-
-      /* ===================== PRESTASI ===================== */
-      #prestasi {
-        padding: 7rem 0;
-      }
-
-      .prestasi-header {
-        max-width: 520px;
-        margin-bottom: 3rem;
-      }
-
-      .prestasi-header h2 {
-        font-family: var(--font-head);
-        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-        font-weight: 800;
-        color: var(--white);
-        letter-spacing: -0.02em;
-        margin-bottom: 0.6rem;
-      }
-
-      .prestasi-header p {
-        color: var(--muted);
-        font-size: 0.97rem;
-      }
-
-      .prestasi-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-      }
-
-      .prestasi-item {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 1.6rem 2rem;
-        display: flex;
-        align-items: center;
-        gap: 1.8rem;
-        transition:
-          border-color 0.3s,
-          transform 0.3s;
-      }
-
-      .prestasi-item:hover {
-        border-color: var(--accent);
-        transform: translateX(6px);
-      }
-
-      .prestasi-medal {
-        font-size: 2rem;
-        flex-shrink: 0;
-      }
-
-      .prestasi-body {
-        flex: 1;
-      }
-
-      .prestasi-title {
-        font-family: var(--font-head);
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: var(--white);
-        margin-bottom: 0.2rem;
-      }
-
-      .prestasi-event {
-        font-size: 0.85rem;
-        color: var(--muted);
-      }
-
-      .prestasi-year {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--accent);
-        letter-spacing: 0.1em;
-        flex-shrink: 0;
-      }
-
-      /* ===================== CTA SECTION ===================== */
-      #cta {
-        padding: 7rem 0;
-        background: var(--bg2);
-        position: relative;
-        overflow: hidden;
-      }
-
-      #cta::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          ellipse at 50% 50%,
-          rgba(0, 212, 255, 0.06) 0%,
-          transparent 65%
-        );
-        pointer-events: none;
-      }
-
-      .cta-inner {
-        text-align: center;
-        position: relative;
-        z-index: 1;
-      }
-
-      .cta-inner h2 {
-        font-family: var(--font-head);
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 800;
-        color: var(--white);
-        line-height: 1.1;
-        letter-spacing: -0.03em;
-        margin-bottom: 1.2rem;
-      }
-
-      .cta-inner h2 span {
-        color: var(--accent);
-      }
-
-      .cta-inner p {
-        color: var(--muted);
-        font-size: 1.02rem;
-        max-width: 480px;
-        margin: 0 auto 2.5rem;
-        line-height: 1.8;
-      }
-
-      .cta-btns {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .btn-primary {
-        background: var(--accent);
-        color: var(--bg);
-        padding: 0.85rem 2rem;
-        border-radius: 6px;
-        text-decoration: none;
-        font-family: var(--font-mono);
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-        box-shadow: 0 0 24px rgba(0, 212, 255, 0.25);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 36px rgba(0, 212, 255, 0.45);
-      }
-
-      .btn-ghost {
-        background: transparent;
-        color: var(--text);
-        padding: 0.85rem 2rem;
-        border-radius: 6px;
-        text-decoration: none;
-        font-family: var(--font-mono);
-        font-size: 0.82rem;
-        letter-spacing: 0.05em;
-        border: 1px solid var(--border);
-        transition:
-          border-color 0.2s,
-          color 0.2s;
-      }
-
-      .btn-ghost:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-
-      /* ===================== FOOTER ===================== */
-      footer {
-        background: var(--bg);
-        border-top: 1px solid var(--border);
-        padding: 3rem 0 2rem;
-      }
-
-      .footer-inner {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr;
-        gap: 3rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .footer-brand p {
-        color: var(--muted);
-        font-size: 0.88rem;
-        line-height: 1.75;
-        max-width: 280px;
-        margin-top: 1rem;
-      }
-
-      .footer-col h4 {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: var(--accent);
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        margin-bottom: 1.2rem;
-      }
-
-      .footer-col ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-      }
-      .footer-col ul a {
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 0.88rem;
-        transition: color 0.2s;
-      }
-      .footer-col ul a:hover {
-        color: var(--accent);
-      }
-
-      .footer-bottom {
-        border-top: 1px solid var(--border);
-        padding-top: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .footer-bottom p {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: var(--muted);
-      }
-
-      .footer-bottom span {
-        color: var(--accent);
-      }
-
-      /* ===================== SCROLL REVEAL ===================== */
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition:
-          opacity 0.7s ease,
-          transform 0.7s ease;
-      }
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* ===================== RESPONSIVE ===================== */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-        .sejarah-grid,
-        .footer-inner {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-        .team-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .org-row.children::before {
-          display: none;
-        }
-        .org-row {
-          flex-wrap: wrap;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <!-- ==================== NAVBAR ==================== -->
     <nav>
-      <div class="nav-inner">
-        <a href="index.html" class="nav-logo">ISC<span>.</span>UNPAM</a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#visi-misi">Visi & Misi</a></li>
-          <li><a href="#" class="active">About</a></li>
-          <li><a href="index.html#services">Bidang</a></li>
-          <li><a href="index.html#kontak" class="nav-cta">Kontak →</a></li>
-        </ul>
+      <div class="nav-brand">
+        <img src="/assets/images/isc_logo.jpeg" alt="ISC Logo" />
+        <span class="nav-brand-text">ISC<span>.</span>UNPAM</span>
       </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#visi-misi">Visi & Misi</a></li>
+        <li><a href="#" class="active">About</a></li>
+        <li><a href="index.html#services">Bidang</a></li>
+        <li><a href="index.html#kontak" class="btn-nav">Kontak</a></li>
+      </ul>
     </nav>
 
-    <!-- ==================== PAGE HERO ==================== -->
-    <section id="page-hero">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="container">
-        <div class="page-hero-content">
-          <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span>/</span>
-            <span>About</span>
-          </div>
-          <h1>Mengenal Lebih Dekat<br /><em>ISC UNPAM</em></h1>
-          <p>
-            Dari sejarah berdiri, struktur organisasi, hingga prestasi yang
-            telah kami raih — inilah cerita kami.
-          </p>
-        </div>
-      </div>
-    </section>
+    <div class="page-header">
+      <div class="breadcrumb"><a href="index.html">Home</a> / About</div>
+      <h1>Mengenal Lebih Dekat <span>ISC UNPAM</span></h1>
+      <p>
+        Dari sejarah berdiri, struktur organisasi, hingga prestasi yang telah
+        kami raih — inilah cerita kami.
+      </p>
+    </div>
 
-    <!-- ==================== SEJARAH ==================== -->
     <section id="sejarah">
-      <div class="container">
-        <div class="sejarah-grid">
-          <div class="sejarah-text reveal">
-            <span class="section-tag">Sejarah</span>
-            <h2>Bermula dari sebuah kelas, tumbuh menjadi komunitas.</h2>
-            <p>
-              ISC UNPAM lahir dari inisiatif sekelompok mahasiswa informatika
-              yang merasa pembelajaran di kelas saja belum cukup. Mereka ingin
-              eksplorasi lebih jauh, belajar hal-hal yang belum ada di
-              kurikulum, dan berbagi ilmu satu sama lain.
-            </p>
-            <p>
-              Dengan modal semangat dan laptop masing-masing, ISC mulai
-              mengadakan sesi belajar mingguan yang lama-lama menarik perhatian
-              semakin banyak mahasiswa. Kini ISC berkembang menjadi salah satu
-              UKM paling aktif di Universitas Pamulang.
-            </p>
+      <div class="sejarah-grid">
+        <div class="sejarah-text">
+          <div class="section-label">Sejarah</div>
+          <h2 class="section-title">
+            Bermula dari sebuah kelas, tumbuh menjadi komunitas.
+          </h2>
+          <p>
+            ISC UNPAM lahir dari inisiatif sekelompok mahasiswa informatika yang
+            merasa pembelajaran di kelas saja belum cukup. Mereka ingin
+            eksplorasi lebih jauh, belajar hal-hal yang belum ada di kurikulum,
+            dan berbagi ilmu satu sama lain.
+          </p>
+          <p>
+            Dengan modal semangat dan laptop masing-masing, ISC mulai mengadakan
+            sesi belajar yang lama-lama menarik perhatian semakin banyak
+            mahasiswa. Kini ISC berkembang menjadi salah satu UKM paling aktif
+            di Universitas Pamulang.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot">🌱</div>
+            <div class="tl-body">
+              <div class="tl-year">2024</div>
+              <div class="tl-title">Pendirian & Peresmian ISC UNPAM</div>
+              <div class="tl-desc">
+                ISC UNPAM resmi berdiri dan diresmikan sebagai Unit Kegiatan
+                Mahasiswa di Universitas Pamulang.
+              </div>
+            </div>
           </div>
-          <div class="timeline reveal">
-            <div class="tl-item">
-              <div class="tl-dot">🌱</div>
-              <div class="tl-body">
-                <div class="tl-year">2021</div>
-                <div class="tl-title">Pendirian ISC UNPAM</div>
-                <div class="tl-desc">
-                  Komunitas belajar kecil terbentuk dari inisiatif 12 mahasiswa
-                  angkatan 2020.
-                </div>
+          <div class="tl-item">
+            <div class="tl-dot">🏆</div>
+            <div class="tl-body">
+              <div class="tl-year">2025</div>
+              <div class="tl-title">Prestasi Pertama</div>
+              <div class="tl-desc">
+                Anggota ISC berhasil meraih prestasi pertama di berbagai
+                kompetisi teknologi tingkat regional dan nasional.
               </div>
             </div>
-            <div class="tl-item">
-              <div class="tl-dot">📋</div>
-              <div class="tl-body">
-                <div class="tl-year">2022</div>
-                <div class="tl-title">Resmi Menjadi UKM</div>
-                <div class="tl-desc">
-                  ISC diresmikan sebagai Unit Kegiatan Mahasiswa oleh pihak
-                  kampus dengan 50+ anggota.
-                </div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot">🏆</div>
-              <div class="tl-body">
-                <div class="tl-year">2023</div>
-                <div class="tl-title">Prestasi Pertama</div>
-                <div class="tl-desc">
-                  Anggota ISC berhasil meraih juara di kompetisi pemrograman
-                  tingkat regional pertama kali.
-                </div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot">🚀</div>
-              <div class="tl-body">
-                <div class="tl-year">2024</div>
-                <div class="tl-title">Ekspansi & Pertumbuhan</div>
-                <div class="tl-desc">
-                  Membuka 6 divisi baru, 150+ anggota aktif, dan menjalin
-                  kolaborasi dengan komunitas tech luar kampus.
-                </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">🚀</div>
+            <div class="tl-body">
+              <div class="tl-year">2026</div>
+              <div class="tl-title">Ekspansi & Pertumbuhan</div>
+              <div class="tl-desc">
+                Memiliki 3 divisi aktif, 80+ anggota, dan siap ikut berlomba di
+                kancah nasional.
               </div>
             </div>
           </div>
@@ -963,282 +92,214 @@
       </div>
     </section>
 
-    <!-- ==================== STRUKTUR ==================== -->
     <section id="struktur">
-      <div class="container">
-        <div class="struktur-header reveal">
-          <span class="section-tag">Struktur Organisasi</span>
-          <h2>Digerakkan oleh orang-orang yang tepat.</h2>
-          <p>
-            Struktur yang solid untuk memastikan setiap program berjalan dengan
-            baik dan setiap anggota terfasilitasi.
-          </p>
-        </div>
+      <div class="section-label">Struktur Organisasi</div>
+      <h2 class="section-title">Digerakkan oleh orang-orang yang tepat.</h2>
+      <p class="section-sub">
+        Struktur yang solid untuk memastikan setiap program berjalan dengan baik
+        dan setiap anggota terfasilitasi.
+      </p>
 
-        <div class="org-chart reveal">
-          <!-- Ketua -->
-          <div class="org-row">
-            <div class="org-card ketua">
-              <div class="org-role">Ketua Umum</div>
-              <div class="org-name">Ahmad Fauzi</div>
+      <div class="org-chart">
+        <div class="org-row">
+          <div class="org-card ketua">
+            <div class="org-role">Ketua Umum</div>
+            <div class="org-name">Mohamad Tohari Maolana</div>
+          </div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-row has-line">
+          <div class="org-card wakil">
+            <div class="org-role">Wakil Ketua</div>
+            <div class="org-name">Allifiah Firnando</div>
+          </div>
+          <div class="org-card wakil">
+            <div class="org-role">Sekretaris</div>
+            <div class="org-name">Aisyah Rahmawati</div>
+          </div>
+          <div class="org-card wakil">
+            <div class="org-role">Bendahara</div>
+            <div class="org-name">Nirmawati</div>
+          </div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-row has-line">
+          <div class="org-card divisi">
+            <div class="org-role">Koor. Divisi</div>
+            <div class="org-name">Web Dev</div>
+            <div class="org-role" style="margin-top: 4px">
+              Rizky Ramadhan M.
             </div>
           </div>
-          <div class="org-connector"></div>
-          <!-- Wakil + Sekretaris + Bendahara -->
-          <div class="org-row children">
-            <div class="org-card wakil">
-              <div class="org-role">Wakil Ketua</div>
-              <div class="org-name">Siti Rahayu</div>
-            </div>
-            <div class="org-card wakil">
-              <div class="org-role">Sekretaris</div>
-              <div class="org-name">Budi Santoso</div>
-            </div>
-            <div class="org-card wakil">
-              <div class="org-role">Bendahara</div>
-              <div class="org-name">Dewi Lestari</div>
-            </div>
+          <div class="org-card divisi">
+            <div class="org-role">Koor. Divisi</div>
+            <div class="org-name">UI/UX Design</div>
+            <div class="org-role" style="margin-top: 4px">Said Rifki</div>
           </div>
-          <div class="org-connector"></div>
-          <!-- Divisi -->
-          <div class="org-row children">
-            <div class="org-card divisi">
-              <div class="org-role">Kadiv</div>
-              <div class="org-name">Web Dev</div>
-            </div>
-            <div class="org-card divisi">
-              <div class="org-role">Kadiv</div>
-              <div class="org-name">Mobile</div>
-            </div>
-            <div class="org-card divisi">
-              <div class="org-role">Kadiv</div>
-              <div class="org-name">UI/UX</div>
-            </div>
-            <div class="org-card divisi">
-              <div class="org-role">Kadiv</div>
-              <div class="org-name">Data Science</div>
-            </div>
-            <div class="org-card divisi">
-              <div class="org-role">Kadiv</div>
-              <div class="org-name">Security</div>
-            </div>
-            <div class="org-card divisi">
-              <div class="org-role">Kadiv</div>
-              <div class="org-name">AI & ML</div>
-            </div>
+          <div class="org-card divisi">
+            <div class="org-role">Koor. Divisi</div>
+            <div class="org-name">English Upskill</div>
+            <div class="org-role" style="margin-top: 4px">Ibrahim Daud S.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== TEAM ==================== -->
     <section id="team">
-      <div class="container">
-        <div class="team-header reveal">
-          <span class="section-tag">Tim Inti</span>
-          <h2>The People Behind ISC</h2>
-          <p>
-            Pengurus inti yang mendedikasikan waktu dan energinya untuk ISC
-            UNPAM.
-          </p>
+      <div class="section-label">Tim Inti</div>
+      <h2 class="section-title">The People Behind ISC</h2>
+      <p class="section-sub">
+        Pengurus inti yang mendedikasikan waktu dan energinya untuk ISC UNPAM.
+      </p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">👨‍💻</div>
+          <div class="team-name">Mohamad Tohari M.</div>
+          <div class="team-role">Ketua Umum</div>
+          <div class="team-angkatan">Angkatan 2023</div>
         </div>
-        <div class="team-grid">
-          <div class="team-card reveal">
-            <div class="team-avatar">👨‍💻</div>
-            <div class="team-name">Ahmad Fauzi</div>
-            <div class="team-role">Ketua Umum</div>
-            <div class="team-div">Informatika '21</div>
-          </div>
-          <div class="team-card reveal">
-            <div class="team-avatar">👩‍🎨</div>
-            <div class="team-name">Siti Rahayu</div>
-            <div class="team-role">Wakil Ketua</div>
-            <div class="team-div">Informatika '21</div>
-          </div>
-          <div class="team-card reveal">
-            <div class="team-avatar">👨‍📋</div>
-            <div class="team-name">Budi Santoso</div>
-            <div class="team-role">Sekretaris</div>
-            <div class="team-div">Informatika '22</div>
-          </div>
-          <div class="team-card reveal">
-            <div class="team-avatar">👩‍💼</div>
-            <div class="team-name">Dewi Lestari</div>
-            <div class="team-role">Bendahara</div>
-            <div class="team-div">Informatika '22</div>
-          </div>
-          <div class="team-card reveal">
-            <div class="team-avatar">🧑‍🌐</div>
-            <div class="team-name">Rizky Pratama</div>
-            <div class="team-role">Kadiv Web Dev</div>
-            <div class="team-div">Informatika '22</div>
-          </div>
-          <div class="team-card reveal">
-            <div class="team-avatar">👩‍📱</div>
-            <div class="team-name">Nadia Putri</div>
-            <div class="team-role">Kadiv Mobile</div>
-            <div class="team-div">Informatika '23</div>
-          </div>
-          <div class="team-card reveal">
-            <div class="team-avatar">🧑‍🎨</div>
-            <div class="team-name">Fajar Nugroho</div>
-            <div class="team-role">Kadiv UI/UX</div>
-            <div class="team-div">Informatika '22</div>
-          </div>
-          <div class="team-card reveal">
-            <div class="team-avatar">👨‍🔬</div>
-            <div class="team-name">Hendra Wijaya</div>
-            <div class="team-role">Kadiv Data</div>
-            <div class="team-div">Informatika '23</div>
-          </div>
+        <div class="team-card">
+          <div class="team-avatar">👩‍🎓</div>
+          <div class="team-name">Allifiah Firnando</div>
+          <div class="team-role">Wakil Ketua</div>
+          <div class="team-angkatan">Angkatan 2023</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👩‍📋</div>
+          <div class="team-name">Aisyah Rahmawati</div>
+          <div class="team-role">Sekretaris</div>
+          <div class="team-angkatan">Angkatan 2024</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👩‍💼</div>
+          <div class="team-name">Nirmawati</div>
+          <div class="team-role">Bendahara</div>
+          <div class="team-angkatan">Angkatan 2024</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">🧑‍🌐</div>
+          <div class="team-name">Rizky Ramadhan M.</div>
+          <div class="team-role">Koor. Web Dev</div>
+          <div class="team-angkatan">Angkatan 2023</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">🎨</div>
+          <div class="team-name">Said Rifki</div>
+          <div class="team-role">Koor. UI/UX</div>
+          <div class="team-angkatan">Angkatan 2023</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">📚</div>
+          <div class="team-name">Ibrahim Daud S.</div>
+          <div class="team-role">Koor. English</div>
+          <div class="team-angkatan">Angkatan 2024</div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== PRESTASI ==================== -->
     <section id="prestasi">
-      <div class="container">
-        <div class="prestasi-header reveal">
-          <span class="section-tag">Prestasi</span>
-          <h2>Karya & Pencapaian Kami</h2>
-          <p>
-            Beberapa prestasi yang telah diraih oleh anggota ISC UNPAM di
-            berbagai ajang kompetisi.
-          </p>
+      <div class="section-label">Prestasi</div>
+      <h2 class="section-title">Karya & Pencapaian Kami</h2>
+      <p class="section-sub">
+        Prestasi yang telah diraih oleh anggota ISC UNPAM di berbagai ajang
+        kompetisi.
+      </p>
+
+      <div class="prestasi-list">
+        <div class="prestasi-card silver">
+          <div class="prestasi-medal">🥈</div>
+          <div class="prestasi-body">
+            <div class="prestasi-place">2nd Winner</div>
+            <div class="prestasi-title">ISC SANS TEAM</div>
+            <div class="prestasi-members">
+              Ardian Setiawan · Ilyas Maulana · Mohamad Tohari Maolana
+            </div>
+            <div class="prestasi-event">
+              Diselenggarakan oleh Multimedia in Action — UPN Veteran Jakarta
+            </div>
+          </div>
+          <div class="prestasi-year">2025</div>
         </div>
-        <div class="prestasi-list">
-          <div class="prestasi-item reveal">
-            <div class="prestasi-medal">🥇</div>
-            <div class="prestasi-body">
-              <div class="prestasi-title">
-                Juara 1 — Hackathon Web Innovation
-              </div>
-              <div class="prestasi-event">
-                Kompetisi IT tingkat perguruan tinggi se-Banten
-              </div>
+
+        <div class="prestasi-card bronze">
+          <div class="prestasi-medal">🥉</div>
+          <div class="prestasi-body">
+            <div class="prestasi-place">3rd Winner — Hackathon</div>
+            <div class="prestasi-title">Salute to Our Rising Stars!</div>
+            <div class="prestasi-members">
+              Andika Bintang · Ramadhan · Muhamad Ikhsan Ramadhan · Muhammad
+              Iqbal · Rasyiq Surya Ramadhan
             </div>
-            <div class="prestasi-year">2024</div>
-          </div>
-          <div class="prestasi-item reveal">
-            <div class="prestasi-medal">🥈</div>
-            <div class="prestasi-body">
-              <div class="prestasi-title">Juara 2 — UI/UX Design Challenge</div>
-              <div class="prestasi-event">
-                Lomba desain antarmuka aplikasi mobile nasional
-              </div>
+            <div class="prestasi-event">
+              Diselenggarakan di Politeknik STMI Jakarta
             </div>
-            <div class="prestasi-year">2024</div>
           </div>
-          <div class="prestasi-item reveal">
-            <div class="prestasi-medal">🏆</div>
-            <div class="prestasi-body">
-              <div class="prestasi-title">Best Project — Gemastik Regional</div>
-              <div class="prestasi-event">
-                Kategori pengembangan aplikasi Gemastik XVII regional Banten
-              </div>
+          <div class="prestasi-year">2025</div>
+        </div>
+
+        <div class="prestasi-card bronze">
+          <div class="prestasi-medal">🥉</div>
+          <div class="prestasi-body">
+            <div class="prestasi-place">3rd Winner — UI/UX</div>
+            <div class="prestasi-title">Kompetisi Ramadhan PRADA 1447H</div>
+            <div class="prestasi-members">Ardian Setiawan · Ilyas Maulana</div>
+            <div class="prestasi-event">
+              Kategori Lomba Inovasi UI/UX — Diselenggarakan di Telkom
+              University
             </div>
-            <div class="prestasi-year">2023</div>
           </div>
-          <div class="prestasi-item reveal">
-            <div class="prestasi-medal">🥉</div>
-            <div class="prestasi-body">
-              <div class="prestasi-title">
-                Juara 3 — Competitive Programming
-              </div>
-              <div class="prestasi-event">
-                Olimpiade Informatika Mahasiswa tingkat regional
-              </div>
-            </div>
-            <div class="prestasi-year">2023</div>
-          </div>
-          <div class="prestasi-item reveal">
-            <div class="prestasi-medal">⭐</div>
-            <div class="prestasi-body">
-              <div class="prestasi-title">
-                Finalis — Google Solution Challenge
-              </div>
-              <div class="prestasi-event">
-                Kompetisi pengembangan solusi teknologi berbasis Google
-              </div>
-            </div>
-            <div class="prestasi-year">2022</div>
-          </div>
+          <div class="prestasi-year">2025</div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== CTA ==================== -->
     <section id="cta">
-      <div class="container">
-        <div class="cta-inner reveal">
-          <span class="section-tag">Bergabung</span>
-          <h2>Siap jadi bagian dari<br /><span>ISC UNPAM?</span></h2>
-          <p>
-            Terbuka untuk semua mahasiswa UNPAM yang ingin berkembang,
-            berkolaborasi, dan berkarya di bidang teknologi.
-          </p>
-          <div class="cta-btns">
-            <a href="index.html#kontak" class="btn-primary">Hubungi Kami →</a>
-            <a href="index.html#services" class="btn-ghost">Lihat Divisi</a>
-          </div>
-        </div>
+      <h2>Siap jadi bagian dari <span>ISC UNPAM?</span></h2>
+      <p>
+        Terbuka untuk semua mahasiswa UNPAM yang ingin berkembang,
+        berkolaborasi, dan berkarya di bidang teknologi.
+      </p>
+      <div class="cta-btns">
+        <a href="index.html#kontak" class="btn-primary">Hubungi Kami</a>
+        <a href="index.html#services" class="btn-outline">Lihat Divisi</a>
       </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
     <footer>
-      <div class="container">
-        <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
           <div class="footer-brand">
-            <a href="index.html" class="nav-logo">ISC<span>.</span>UNPAM</a>
-            <p>
-              Komunitas mahasiswa informatika UNPAM yang tumbuh bersama dalam
-              semangat belajar, berkarya, dan berdampak.
-            </p>
+            <img src="/assets/images/isc_logo.jpeg" alt="ISC Logo" />
+            <span>ISC<em>.</em>UNPAM</span>
           </div>
-          <div class="footer-col">
-            <h4>Navigasi</h4>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="index.html#visi-misi">Visi & Misi</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="index.html#services">Bidang</a></li>
-              <li><a href="index.html#kontak">Kontak</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Divisi</h4>
-            <ul>
-              <li><a href="#">Web Development</a></li>
-              <li><a href="#">Mobile Dev</a></li>
-              <li><a href="#">UI/UX Design</a></li>
-              <li><a href="#">Data Science</a></li>
-              <li><a href="#">Cybersecurity</a></li>
-            </ul>
-          </div>
+          <p>
+            Komunitas mahasiswa informatika UNPAM yang tumbuh bersama dalam
+            semangat belajar, berkarya, dan berdampak.
+          </p>
         </div>
-        <div class="footer-bottom">
-          <p>© 2024 <span>ISC UNPAM</span>. All rights reserved.</p>
-          <p>Made with <span>♥</span> by ISC Web Dev Division</p>
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#visi-misi">Visi & Misi</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="index.html#services">Bidang</a></li>
+            <li><a href="index.html#kontak">Kontak</a></li>
+          </ul>
         </div>
+        <div class="footer-col">
+          <h4>Divisi</h4>
+          <ul>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">UI/UX Design</a></li>
+            <li><a href="#">English Upskill</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 <span>ISC UNPAM</span>. All rights reserved.</p>
+        <p>Made by ISC Web Dev Division</p>
       </div>
     </footer>
-
-    <!-- ==================== SCROLL REVEAL ==================== -->
-    <script>
-      const reveals = document.querySelectorAll(".reveal");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => entry.target.classList.add("visible"), i * 80);
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 },
-      );
-      reveals.forEach((el) => observer.observe(el));
-    </script>
   </body>
 </html>
